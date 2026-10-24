@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Users · TrustVault{% endblock %}
+{% block content %}
+<h1>Users</h1>
+<div class="card"><div class="tablewrap"><table>
+  <tr><th>Name</th><th>Email</th><th>Docs</th><th>Joined</th><th>Role</th><th></th></tr>
+  {% for u in rows %}<tr><td>{{ u.name }}</td><td>{{ u.email }}</td><td>{{ u.docs }}</td><td>{{ u.created_at[:10] }}</td>
+  <td>{% if u.id == g.user.id %}<span class="role {{ u.role }}">{{ u.role }} (you)</span>{% else %}
+    <form method="post" action="{{ url_for('set_role', uid=u.id) }}" class="inline tight"><input type="hidden" name="_csrf" value="{{ csrf() }}">
+      <select name="role" onchange="this.form.submit()">{% for r in ('admin','owner','viewer') %}<option {{ 'selected' if r==u.role }}>{{ r }}</option>{% endfor %}</select></form>{% endif %}</td>
+  <td>{% if u.id != g.user.id %}<form method="post" action="{{ url_for('delete_user', uid=u.id) }}" onsubmit="return confirm('Delete this user and all their documents?')"><input type="hidden" name="_csrf" value="{{ csrf() }}"><button class="ghost sm">Delete</button></form>{% endif %}</td></tr>
+  {% endfor %}
+</table></div></div>
+{% endblock %}

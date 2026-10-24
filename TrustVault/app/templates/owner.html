@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Owner Dashboard · TrustVault{% endblock %}
+
+{% block content %}
+<div class="head">
+  <h1>Owner Dashboard</h1>
+  <a class="btn" href="{{ url_for('upload') }}">Upload document</a>
+</div>
+<div class="card">
+  <p>Welcome, <strong>{{ g.user.name }}</strong>! As a <strong>Document Owner</strong>, you can upload documents, share them with others, and view shared files.</p>
+</div>
+<div class="card">
+  <h2>My Documents</h2>
+  {% with rows=mine, perm=false, empty="You haven't uploaded anything yet." %}
+    {% include "_table.html" %}
+  {% endwith %}
+</div>
+<div class="card">
+  <h2>Shared With Me</h2>
+  {% with rows=shared, perm=true, empty="Nothing has been shared with you yet." %}
+    {% include "_table.html" %}
+  {% endwith %}
+</div>
+{% endblock %}

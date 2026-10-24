@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Upload · TrustVault{% endblock %}
+{% block content %}
+<h1>Upload document</h1>
+<form method="post" enctype="multipart/form-data" class="card narrow">
+  <input type="hidden" name="_csrf" value="{{ csrf() }}">
+  <label>File (max 16 MB)<input type="file" name="file" required></label>
+  <label>Title <span class="muted">(optional, defaults to file name)</span><input name="title"></label>
+  <label>Category<select name="category">{% for c in CATEGORIES %}<option>{{ c }}</option>{% endfor %}</select></label>
+  <label>Share with <span class="muted">(hold Ctrl or Cmd to pick several)</span>
+    <select name="share_with" multiple size="5">
+      {% for u in users %}<option value="{{ u.id }}">{{ u.name }} · {{ u.email }} ({{ u.role }})</option>{% endfor %}
+    </select></label>
+  <label>Permission for selected users
+    <select name="permission"><option value="read">Read – view and download</option><option value="edit">Edit – also rename and replace file</option></select></label>
+  <button class="btn">Upload</button>
+</form>
+{% endblock %}

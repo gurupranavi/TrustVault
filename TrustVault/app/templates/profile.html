@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Profile · TrustVault{% endblock %}
+{% block content %}
+<h1>Profile</h1>
+<form method="post" class="card narrow"><h2>Details</h2>
+  <input type="hidden" name="_csrf" value="{{ csrf() }}">
+  <label>Name<input name="name" value="{{ g.user.name }}" required></label>
+  <label>Email<input value="{{ g.user.email }}" disabled></label>
+  <button class="btn">Save</button></form>
+<form method="post" action="{{ url_for('avatar_upload') }}" enctype="multipart/form-data" class="card narrow"><h2>Profile image</h2>
+  <input type="hidden" name="_csrf" value="{{ csrf() }}">
+  <label><input type="file" name="avatar" accept="image/*" required></label>
+  <button class="btn">Update image</button></form>
+<form method="post" action="{{ url_for('password') }}" class="card narrow"><h2>Change password</h2>
+  <input type="hidden" name="_csrf" value="{{ csrf() }}">
+  <label>Current password<input type="password" name="current" required></label>
+  <label>New password<input type="password" name="new" minlength="8" required></label>
+  <label>Confirm new password<input type="password" name="confirm" minlength="8" required></label>
+  <button class="btn">Update password</button></form>
+{% endblock %}

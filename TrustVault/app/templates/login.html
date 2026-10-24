@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Sign in · TrustVault{% endblock %}
+{% block content %}
+<div class="card authcard">
+  <h1 class="brand big">TrustVault</h1>
+  <p class="muted">Sign in to your document vault.</p>
+  <form method="post">
+    <input type="hidden" name="_csrf" value="{{ csrf() }}">
+    <label>Email<input type="email" name="email" required autofocus></label>
+    <label>Password<input type="password" name="password" required></label>
+    <button class="btn full">Sign in</button>
+  </form>
+  <p class="muted">New here? <a href="{{ url_for('register') }}">Create an account</a></p>
+</div>
+{% endblock %}

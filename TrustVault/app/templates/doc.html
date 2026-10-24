@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}{{ d.title }} · TrustVault{% endblock %}
+{% block content %}
+<div class="head"><h1>{{ d.title }}</h1>
+  <a class="btn" href="{{ url_for('download', doc_id=d.id) }}">Download</a></div>
+<div class="card">
+  <dl class="meta">
+    <dt>File</dt><dd>{{ d.filename }} ({{ d.size|filesize }})</dd>
+    <dt>Category</dt><dd>{{ d.category }}</dd>
+    <dt>Owner</dt><dd>{{ d.owner_name }}</dd>
+    <dt>Uploaded</dt><dd>{{ d.created_at }}</dd>
+    <dt>Last updated</dt><dd>{{ d.updated_at }}</dd>
+    <dt>Your access</dt><dd><span class="tag">{{ lvl }}</span></dd>
+  </dl>
+</div>
+
+{% if can_edit %}
+<form method="post" action="{{ url_for('doc_update', doc_id=d.id) }}" enctype="multipart/form-data" class="card narrow">
+  <h2>Edit document</h2>
+  <input type="hidden" name="_csrf" value="{{ csrf() }}">
+  <label>Title<input name="title" value="{{ d.title }}"></label>
+  <label>Category<select name="category">{% for c in CATEGORIES %}<option {{ 'selected' if c==d.category }}>{{ c }}</option>{% endfor %}</select></label>
+  <label>Replace file <span class="muted">(optional)</span><input type="file" name="file"></label>
+  <button class="btn">Save changes</button>
+</form>
+{% endif %}
+
+{% if manage %}
+<div class="card">
+  <h2>Who has access</h2>
+  <div class="tablewrap"><table>
+    <tr><th>User</th><th>Role</th><th>Permission</th><th></th></tr>
+    {% for s in shares %}<tr><td>{{ s.name }}<br><span class="muted sm">{{ s.email }}</span></td><td>{{ s.role }}</td><td><span class="tag">{{ s.permission }}</span></td>
+      <td><form method="post" action="{{ url_for('revoke', doc_id=d.id, user_id=s.user_id) }}"><input type="hidden" name="_csrf" value="{{ csrf() }}"><button class="ghost sm">Revoke</button></form></td></tr>
+    {% else %}<tr><td colspan="4" class="muted">Not shared with anyone.</td></tr>{% endfor %}
+  </table></div>
+  {% if others %}
+  <form method="post" action="{{ url_for('share', doc_id=d.id) }}" class="inline">
+    <input type="hidden" name="_csrf" value="{{ csrf() }}">
+    <label>Grant access to<select name="user_id">{% for u in others %}<option value="{{ u.id }}">{{ u.name }} · {{ u.email }}</option>{% endfor %}</select></label>
+    <label>Permission<select name="permission"><option value="read">Read</option><option value="edit">Edit</option></select></label>
+    <button class="btn">Grant access</button>
+  </form>
+  {% endif %}
+</div>
+<form method="post" action="{{ url_for('delete_doc', doc_id=d.id) }}" onsubmit="return confirm('Delete this document permanently?')">
+  <input type="hidden" name="_csrf" value="{{ csrf() }}"><button class="danger">Delete document</button>
+</form>
+{% else %}
+<p class="muted">Only the admin or the document owner can manage access to this document.</p>
+{% endif %}
+{% endblock %}

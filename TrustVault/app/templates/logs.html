@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Activity logs · TrustVault{% endblock %}
+{% block content %}
+<div class="head"><h1>Activity logs</h1>
+<form method="get" class="inline"><label>Action<select name="action" onchange="this.form.submit()"><option value="">All</option>{% for a in actions %}<option {{ 'selected' if a==action }}>{{ a }}</option>{% endfor %}</select></label></form></div>
+<div class="card"><div class="tablewrap"><table>
+  <tr><th>Time</th><th>User</th><th>Action</th><th>Detail</th><th>IP</th></tr>
+  {% for r in rows %}<tr><td>{{ r.created_at }}</td><td>{{ r.user_name }}</td><td><span class="tag">{{ r.action }}</span></td><td>{{ r.detail }}</td><td>{{ r.ip }}</td></tr>
+  {% else %}<tr><td colspan="5" class="muted">No log entries.</td></tr>{% endfor %}
+</table></div><p class="muted sm">Showing the latest 300 entries.</p></div>
+{% endblock %}

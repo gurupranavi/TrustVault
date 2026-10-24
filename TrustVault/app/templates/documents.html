@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}My documents · TrustVault{% endblock %}
+{% block content %}
+<div class="head"><h1>My documents</h1>{% if g.user.role != 'viewer' %}<a class="btn" href="{{ url_for('upload') }}">Upload document</a>{% endif %}</div>
+<div class="card"><h2>Uploaded by me</h2>
+{% with rows=mine, perm=false, empty="You haven't uploaded anything yet." %}{% include "_table.html" %}{% endwith %}</div>
+<div class="card"><h2>Shared with me</h2>
+{% with rows=shared, perm=true, empty="Nothing has been shared with you." %}{% include "_table.html" %}{% endwith %}</div>
+{% endblock %}

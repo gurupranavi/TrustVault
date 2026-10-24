@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Viewer Dashboard · TrustVault{% endblock %}
+
+{% block content %}
+<div class="head">
+  <h1>Viewer Dashboard</h1>
+  <span class="role viewer">Role: Viewer (Read-Only)</span>
+</div>
+<div class="card">
+  <p>Welcome, <strong>{{ g.user.name }}</strong>! You have a dedicated <strong>Viewer</strong> account. You can view and download all documents shared with you.</p>
+</div>
+<div class="card">
+  <h2>Documents Shared With You</h2>
+  {% with rows=shared, perm=true, empty="No documents have been shared with your viewer account yet." %}
+    {% include "_table.html" %}
+  {% endwith %}
+</div>
+{% endblock %}

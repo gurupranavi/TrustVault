@@ -1,0 +1,82 @@
+================================================================================
+TRUSTVAULT - HOW TO RUN THE PROJECT
+================================================================================
+
+TrustVault is a secure document upload and access-managed web application built
+with Flask and SQLite, featuring role-based access control (Admin, Owner, Viewer),
+document encryption/storage, audit logging, and a responsive clean UI.
+
+--------------------------------------------------------------------------------
+1. PREREQUISITES
+--------------------------------------------------------------------------------
+- Python 3.10 or higher installed (check with: python --version)
+- Windows PowerShell or Command Prompt (or Terminal on macOS/Linux)
+
+--------------------------------------------------------------------------------
+2. STEP-BY-STEP RUNNING INSTRUCTIONS (Windows PowerShell)
+--------------------------------------------------------------------------------
+
+Step 1: Open PowerShell and navigate to the project directory:
+   cd c:\Users\pavit\Downloads\TrustVault\TrustVault
+
+Step 2: Activate the existing virtual environment:
+   .\venv\Scripts\Activate.ps1
+
+   (Note: If PowerShell shows a script execution error, run:
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    and then activate again)
+
+Step 3: (Optional if packages already installed) Install required dependencies:
+   python -m pip install -r requirements.txt
+
+Step 4: Launch the TrustVault web application:
+   python run.py
+
+Step 5: Open your web browser and navigate to:
+   http://127.0.0.1:5000/
+   or
+   http://localhost:5000/
+
+--------------------------------------------------------------------------------
+3. STEP-BY-STEP RUNNING INSTRUCTIONS (Standard Command Prompt - cmd.exe)
+--------------------------------------------------------------------------------
+   cd c:\Users\pavit\Downloads\TrustVault\TrustVault
+   venv\Scripts\activate.bat
+   python run.py
+   Open browser at: http://127.0.0.1:5000/
+
+--------------------------------------------------------------------------------
+4. DEFAULT LOGIN CREDENTIALS
+--------------------------------------------------------------------------------
+An initial admin account is pre-configured or created on the first run:
+   • Email:    admin@trustvault.local
+   • Password: Admin@123
+   (You can change the password in the Profile section after logging in)
+
+Or register a new account on the register page:
+   • Click "Create an account"
+   • Newly registered users are assigned the "Owner" role by default.
+
+--------------------------------------------------------------------------------
+5. USER ROLES & PERMISSIONS
+--------------------------------------------------------------------------------
+1. Admin:
+   - Full access to system dashboard (upload statistics, users, logs).
+   - Can manage user roles, delete users, and inspect security activity logs.
+   - Can view and manage permissions for all documents uploaded in the vault.
+
+2. Owner:
+   - Full control over their own uploaded documents (Upload, Edit, Delete).
+   - Can share documents with other users with granular permissions (Read or Edit).
+   - Can grant or revoke access at any time.
+
+3. Viewer:
+   - Read-only access to view and download documents explicitly shared with them.
+   - Cannot upload new documents or alter sharing settings.
+
+--------------------------------------------------------------------------------
+6. STOPPING THE SERVER
+--------------------------------------------------------------------------------
+To stop the server at any time, go to the terminal window and press:
+   Ctrl + C
+================================================================================

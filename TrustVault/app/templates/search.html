@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Search · TrustVault{% endblock %}
+{% block content %}
+<h1>Search documents</h1>
+<form method="get" class="card filters">
+  <label>Name<input name="q" value="{{ a.q }}"></label>
+  <label>Category<select name="category"><option value="">All</option>{% for c in CATEGORIES %}<option {{ 'selected' if a.category==c }}>{{ c }}</option>{% endfor %}</select></label>
+  <label>Owner<input name="owner" value="{{ a.owner }}"></label>
+  <label>From<input type="date" name="date_from" value="{{ a.date_from }}"></label>
+  <label>To<input type="date" name="date_to" value="{{ a.date_to }}"></label>
+  <button class="btn">Search</button>
+</form>
+<div class="card">
+{% with rows=results, perm=false, empty=("No documents match these filters." if searched else "No documents available yet.") %}{% include "_table.html" %}{% endwith %}</div>
+{% endblock %}

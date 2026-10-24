@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard · TrustVault{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+<p>Welcome, {{ g.user.name }}! You have full administrative access.</p>
+<ul>
+  <li><a href="{{ url_for('logs') }}">System Logs</a></li>
+  <li><a href="{{ url_for('users') }}">User Management</a></li>
+  <li><a href="{{ url_for('dashboard') }}">System Statistics</a></li>
+</ul>
+{% endblock %}

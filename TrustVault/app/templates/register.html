@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Register · TrustVault{% endblock %}
+{% block content %}
+<div class="card authcard">
+  <h1 class="brand big">TrustVault</h1>
+  <p class="muted">Create an account. You can upload and share your own documents.</p>
+  <form method="post">
+    <input type="hidden" name="_csrf" value="{{ csrf() }}">
+    <label>Full name<input name="name" required></label>
+    <label>Email<input type="email" name="email" required></label>
+    <label>Account Role
+      <select name="role">
+        <option value="owner">Document Owner (Can upload, manage, and share documents)</option>
+        <option value="viewer">Viewer (Read-only access to shared documents)</option>
+      </select>
+    </label>
+    <label>Password (8+ characters)<input type="password" name="password" minlength="8" required></label>
+    <label>Confirm password<input type="password" name="confirm" minlength="8" required></label>
+    <button class="btn full">Create account</button>
+  </form>
+  <p class="muted">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p>
+</div>
+{% endblock %}

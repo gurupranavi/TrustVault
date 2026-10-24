@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Categories · TrustVault{% endblock %}
+{% block content %}
+<h1>Categories</h1>
+<div class="stats">
+{% for c in CATEGORIES %}
+  <a class="stat link" href="{{ url_for('search', category=c) }}"><b>{{ counts.get(c, 0) }}</b><span>{{ c }}</span></a>
+{% endfor %}
+</div>
+{% endblock %}

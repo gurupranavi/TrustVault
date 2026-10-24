@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · TrustVault{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="stats">
+  <div class="stat"><b>{{ s.docs }}</b><span>Documents uploaded</span></div>
+  <div class="stat"><b>{{ s.users }}</b><span>Registered users</span></div>
+  <div class="stat"><b>{{ s.shares }}</b><span>Sharing grants</span></div>
+  <div class="stat"><b>{{ s.shared_docs }}</b><span>Records shared</span></div>
+  <div class="stat"><b>{{ s.logs }}</b><span>Activity log entries</span></div>
+  <div class="stat {{ 'ok' if s.status=='Secure' else 'warn' }}"><b>{{ s.status }}</b><span>Security status · {{ s.failed }} failed sign-ins in 24h</span></div>
+</div>
+<div class="card">
+  <h2>Recent activity</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Time</th><th>User</th><th>Action</th><th>Detail</th></tr>
+    {% for r in recent %}<tr><td>{{ r.created_at }}</td><td>{{ r.user_name }}</td><td><span class="tag">{{ r.action }}</span></td><td>{{ r.detail }}</td></tr>
+    {% else %}<tr><td colspan="4" class="muted">No activity yet.</td></tr>{% endfor %}
+  </table></div>
+  <p><a href="{{ url_for('logs') }}">View all logs</a> · <a href="{{ url_for('users') }}">Manage users</a></p>
+</div>
+{% endblock %}

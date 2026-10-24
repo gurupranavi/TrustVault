@@ -9,21 +9,15 @@ TrustVault is a secure, role-based document management web application built wit
 ### 1. Clean & Secure Sign In
 A clean, official white layout with secure authentication and high-contrast inputs for effortless typing:
 
-![Sign In Page](screenshots/01_login_clean.png)
-
 ---
 
 ### 2. Form Input & Validation
 Clean white input styling with clear slate typography, password mask toggling, and input security:
 
-![Login In Action](screenshots/02_login_typing.png)
-
 ---
 
 ### 3. User Dashboard & "My Documents"
 Organized into two distinct categories: **Uploaded by me** (with full owner permissions to edit, share, or delete) and **Shared with me** (with granted read/edit access):
-
-![Dashboard & Documents](screenshots/03_my_documents_dashboard.png)
 
 ---
 

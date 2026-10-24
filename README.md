@@ -146,7 +146,7 @@ TrustVault/
 ---
 
 ##  Tech Stack
-- **Backend**: Python, Flask, Jinja2
+- **Backend**: Python, Flask
 - **Database**: SQLite3
 - **Frontend**: Clean Semantic HTML5, Vanilla Responsive CSS (Zero external CSS bloat, ultra fast load times)
 "# TrustVault" 

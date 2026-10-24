@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: trustvault
+    runtime: docker
+    plan: free
+    healthCheckPath: /

@@ -105,7 +105,7 @@ TrustVault/
 ├── app/
 │   ├── static/
 │   │   └── style.css            # Responsive, modern white-theme stylesheet
-│   ├── templates/               # Jinja2 HTML templates
+│   ├── templates/               # HTML templates
 │   │   ├── base.html            # Core layout with responsive navigation drawer
 │   │   ├── login.html           # Sign in interface
 │   │   ├── register.html        # New user registration

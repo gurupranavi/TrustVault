@@ -1,27 +1,27 @@
-# 🛡️ TrustVault — Secure Document Vault & Access Management
+#  TrustVault — Secure Document Vault & Access Management
 
 TrustVault is a secure, role-based document management web application built with **Python (Flask)** and **SQLite**. It provides safe document uploading, categorical organization, comprehensive audit logging, and granular access control with permission granting and revoking.
 
 ---
 
-## 📸 Visual Walkthrough & Screenshots
+##  Visual Walkthrough & Screenshots
 
 ### 1. Clean & Secure Sign In
-A clean, official white layout with secure authentication and high-contrast inputs for effortless typing:
+A clean, official white layout with secure authentication and high-contrast inputs for effortless typing
 
 ---
 
 ### 2. Form Input & Validation
-Clean white input styling with clear slate typography, password mask toggling, and input security:
+Clean white input styling with clear slate typography, password mask toggling, and input security
 
 ---
 
 ### 3. User Dashboard & "My Documents"
-Organized into two distinct categories: **Uploaded by me** (with full owner permissions to edit, share, or delete) and **Shared with me** (with granted read/edit access):
+Organized into two distinct categories: **Uploaded by me** (with full owner permissions to edit, share, or delete) and **Shared with me** (with granted read/edit access)
 
 ---
 
-## 🎯 The Problem & What TrustVault Solves
+##  The Problem & What TrustVault Solves
 
 In collaborative environments, unauthorized document access or accidental file deletion can compromise sensitive organizational data. TrustVault addresses this with:
 1. **Three-Tier User Roles**: Distinct separation of privileges between **Admin**, **Owner**, and **Viewer**.
@@ -47,7 +47,7 @@ In collaborative environments, unauthorized document access or accidental file d
 
 ---
 
-## 🚀 How to Run the Project
+##  How to Run the Project
 
 ### Prerequisites
 - **Python 3.10+** installed
@@ -81,11 +81,11 @@ python run.py
 ```
 
 Now open your web browser at:
-👉 **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
+ **[http://127.0.0.1:5000/](http://127.0.0.1:5000/)**
 
 ---
 
-## 🔑 Default Credentials
+##  Default Credentials
 
 A default administrator account is initialized automatically on first startup:
 
@@ -97,7 +97,7 @@ New registrations through the **"Create an account"** link receive the **Owner**
 
 ---
 
-## 📁 Project Directory Structure
+##  Project Directory Structure
 
 ```text
 TrustVault/
@@ -124,9 +124,10 @@ TrustVault/
 │   └── trustvault.db            # SQLite database (auto-created)
 │
 ├── screenshots/                 # Application visual walkthrough images
-│   ├── 01_login_clean.png
-│   ├── 02_login_typing.png
-│   └── 03_my_documents_dashboard.png
+│   ├── login.png
+│   ├── admin.png
+│   └── owner.png
+|   └── viewer.png
 │
 ├── requirements.txt             # Python package dependencies
 ├── running.text                 # Quick execution reference file
@@ -136,7 +137,7 @@ TrustVault/
 
 ---
 
-## 🔒 Security Architecture
+##  Security Architecture
 - **CSRF Token Verification**: Every state-changing form includes automatic CSRF validation.
 - **Password Security**: Passwords are securely hashed with industry-standard Werkzeug / PBKDF2 hashing.
 - **Isolated Storage**: Uploaded files are validated, renamed safely, and saved in dedicated, non-executable directories with a 16MB file-size limit.
@@ -144,7 +145,7 @@ TrustVault/
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Backend**: Python, Flask, Jinja2
 - **Database**: SQLite3
 - **Frontend**: Clean Semantic HTML5, Vanilla Responsive CSS (Zero external CSS bloat, ultra fast load times)
